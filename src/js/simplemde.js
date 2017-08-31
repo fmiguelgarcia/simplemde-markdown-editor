@@ -668,10 +668,12 @@ function drawHorizontalRule(editor) {
 /**
  * Action for drawing custom texts
  */
-function drawCustom(editor, insertTexts) {
+function drawCustom(editor, insertTexts, content) {
 	var cm = editor.codemirror;
 	var stat = getState(cm);
-	_replaceSelection(cm, false, insertTexts);
+	var options = editor.options;
+	
+	_replaceSelection(cm, false, insertTexts, content);
 }
 
 /**
