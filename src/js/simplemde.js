@@ -36,6 +36,7 @@ var bindings = {
 	"toggleHeading3": toggleHeading3,
 	"cleanBlock": cleanBlock,
 	"drawTable": drawTable,
+	"drawCustom": drawCustom,
 	"drawHorizontalRule": drawHorizontalRule,
 	"undo": undo,
 	"redo": redo,
@@ -664,6 +665,14 @@ function drawHorizontalRule(editor) {
 	_replaceSelection(cm, stat.image, options.insertTexts.horizontalRule);
 }
 
+/**
+ * Action for drawing custom texts
+ */
+function drawCustom(editor, insertTexts) {
+	var cm = editor.codemirror;
+	var stat = getState(cm);
+	_replaceSelection(cm, false, insertTexts);
+}
 
 /**
  * Undo action.
@@ -1901,6 +1910,7 @@ SimpleMDE.redo = redo;
 SimpleMDE.togglePreview = togglePreview;
 SimpleMDE.toggleSideBySide = toggleSideBySide;
 SimpleMDE.toggleFullScreen = toggleFullScreen;
+SimpleMDE.drawCustom = drawCustom
 
 /**
  * Bind instance methods for exports.
@@ -1953,6 +1963,10 @@ SimpleMDE.prototype.drawImage = function() {
 SimpleMDE.prototype.drawTable = function() {
 	drawTable(this);
 };
+SimpleMDE.prototype.drawCustom = function() {
+	drawCustom(this);
+};
+
 SimpleMDE.prototype.drawHorizontalRule = function() {
 	drawHorizontalRule(this);
 };
